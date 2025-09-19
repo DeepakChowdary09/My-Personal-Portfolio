@@ -1,6 +1,15 @@
+import { Code, Server, Wrench } from "lucide-react";
 import PropTypes from "prop-types";
 
 const Skills = ({ darkMode }) => {
+  const categoryIcons = {
+    Frontend: <Code className="w-6 h-6 text-blue-500 inline-block mr-2" />,
+    Backend: <Server className="w-6 h-6 text-green-500 inline-block mr-2" />,
+    "Tools & DevOps": (
+      <Wrench className="w-6 h-6 text-orange-500 inline-block mr-2" />
+    ),
+  };
+
   const skills = [
     {
       category: "Frontend",
@@ -43,19 +52,13 @@ const Skills = ({ darkMode }) => {
       id="skills"
       className={`py-20 transition-colors duration-500 ${
         darkMode
-          ? "bg-gradient-to-r from-[#264653] to-[#2A9D8F]"
-          : "bg-gradient-to-r from-[#264653] via-[#2A9D8F] to-[#264653]"
+          ? "bg-gradient-to-r from-[#0F172A] via-[#1E293B] to-[#111827] text-white"
+          : "bg-gradient-to-r from-[#F9FAFB] via-[#F3F4F6] to-white text-gray-900"
       }`}
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r ${
-              darkMode
-                ? "from-blue-400 to-purple-500"
-                : "from-blue-600 to-purple-600"
-            }`}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Technical Expertise
           </h2>
           <p
@@ -71,23 +74,20 @@ const Skills = ({ darkMode }) => {
           {skills.map((skillGroup) => (
             <div
               key={skillGroup.category}
-              className={`p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl ${
-                darkMode ? "bg-gray-800" : "bg-white"
+              className={`p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm ${
+                darkMode ? "bg-white/5 text-white" : "bg-gray-100 text-gray-900"
               }`}
             >
               <h3
-                className={`text-2xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r ${
-                  darkMode
-                    ? "from-blue-400 to-purple-500"
-                    : "from-blue-600 to-purple-600"
-                }`}
+                className={`text-2xl font-bold mb-6 flex justify-center items-center gap-2`}
               >
+                {categoryIcons[skillGroup.category]}
                 {skillGroup.category}
               </h3>
 
               <div className="space-y-4">
                 {skillGroup.items.map((skill) => (
-                  <div key={skill.name} className="relative">
+                  <div key={skill.name} className="relative group">
                     <div className="flex justify-between items-center mb-2">
                       <span
                         className={`font-semibold ${
@@ -105,9 +105,10 @@ const Skills = ({ darkMode }) => {
                       </span>
                     </div>
 
-                    <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    {/* Progress Bar */}
+                    <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                       <div
-                        className={`h-2.5 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                        className={`h-2.5 rounded-full bg-gradient-to-r ${skill.color} transition-[width] duration-1000 ease-out group-hover:scale-[1.02]`}
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>

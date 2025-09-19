@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({
@@ -14,48 +15,61 @@ const Contact = ({ darkMode }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // ✅ Log to localhost console
     console.log("Form Data:", formData);
+
+    // ✅ Toast confirmation
+    toast.success(" Thank you for reaching out! I’ll get back to you soon 🥂");
+
+    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
     <section
       id="contact"
-      className={`py-12 transition-colors duration-500 ${
+      className={`py-20 px-6 transition-colors duration-700 ${
         darkMode
-          ? "bg-gradient-to-r from-[#264653] to-[#2A9D8F]"
-          : "bg-gradient-to-r from-[#264653] via-[#2A9D8F] to-[#264653]"
+          ? "bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364]"
+          : "bg-gradient-to-br from-[#e0eafc] via-[#cfdef3] to-[#e0eafc]"
       }`}
     >
-      <div className="container mx-auto px-4 max-w-2xl">
+      <div className="container mx-auto max-w-3xl">
+        {/* Heading */}
         <h2
-          className={`text-4xl font-bold mb-6 text-center ${
-            darkMode ? "text-white" : "text-gray-800"
+          className={`text-5xl font-extrabold mb-6 text-center drop-shadow-lg ${
+            darkMode
+              ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-400"
+              : "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
           }`}
         >
-          Contact Me
+          Let’s Connect
         </h2>
         <p
-          className={`text-center mb-8 leading-relaxed ${
+          className={`text-center mb-12 text-lg leading-relaxed ${
             darkMode ? "text-gray-300" : "text-gray-700"
           }`}
         >
-          Feel free to reach out to me using the form below for any inquiries or
-          collaborations.
+          Have a project in mind, or just want to say hi? Drop a message and
+          I’ll get back to you soon 🚀
         </p>
 
+        {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className={`p-6 rounded-lg shadow-lg space-y-6 ${
-            darkMode ? "bg-gray-700" : "bg-white bg-opacity-10"
+          className={`p-8 rounded-2xl shadow-2xl space-y-6 backdrop-blur-md ${
+            darkMode
+              ? "bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-gray-700"
+              : "bg-gradient-to-br from-white/80 to-gray-100/80 border border-gray-300"
           }`}
         >
-          {/* Name Input */}
+          {/* Name */}
           <div>
             <label
               htmlFor="name"
-              className={`block mb-2 text-lg font-medium ${
-                darkMode ? "text-gray-300" : "text-gray-800"
+              className={`block mb-2 text-lg font-semibold ${
+                darkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               Name
@@ -67,21 +81,21 @@ const Contact = ({ darkMode }) => {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`w-full p-3 border rounded-lg focus:outline-none ${
+              className={`w-full p-4 rounded-xl focus:outline-none border transition-all duration-300 ${
                 darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
-                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
+                  ? "border-gray-700 bg-gray-900 text-gray-200 focus:ring-2 focus:ring-purple-500"
+                  : "border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-blue-500"
               }`}
               placeholder="Enter your name"
             />
           </div>
 
-          {/* Email Input */}
+          {/* Email */}
           <div>
             <label
               htmlFor="email"
-              className={`block mb-2 text-lg font-medium ${
-                darkMode ? "text-gray-300" : "text-gray-800"
+              className={`block mb-2 text-lg font-semibold ${
+                darkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               Email
@@ -93,21 +107,21 @@ const Contact = ({ darkMode }) => {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`w-full p-3 border rounded-lg focus:outline-none ${
+              className={`w-full p-4 rounded-xl focus:outline-none border transition-all duration-300 ${
                 darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
-                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
+                  ? "border-gray-700 bg-gray-900 text-gray-200 focus:ring-2 focus:ring-pink-500"
+                  : "border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500"
               }`}
               placeholder="Enter your email"
             />
           </div>
 
-          {/* Message Input */}
+          {/* Message */}
           <div>
             <label
               htmlFor="message"
-              className={`block mb-2 text-lg font-medium ${
-                darkMode ? "text-gray-300" : "text-gray-800"
+              className={`block mb-2 text-lg font-semibold ${
+                darkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               Message
@@ -118,26 +132,26 @@ const Contact = ({ darkMode }) => {
               value={formData.message}
               onChange={handleChange}
               required
-              className={`w-full p-3 border rounded-lg focus:outline-none h-32 ${
+              className={`w-full p-4 h-36 rounded-xl focus:outline-none border transition-all duration-300 ${
                 darkMode
-                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
-                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
+                  ? "border-gray-700 bg-gray-900 text-gray-200 focus:ring-2 focus:ring-blue-500"
+                  : "border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-pink-500"
               }`}
               placeholder="Enter your message"
             ></textarea>
           </div>
 
-          {/* Submit Button */}
+          {/* Button */}
           <div className="text-center">
             <button
               type="submit"
-              className={`font-semibold py-2 px-6 rounded-lg shadow transition duration-300 ${
+              className={`px-8 py-3 text-lg font-bold rounded-xl shadow-xl transform transition duration-300 hover:scale-105 ${
                 darkMode
-                  ? "bg-blue-500 text-white hover:bg-blue-400"
-                  : "bg-blue-500 text-white hover:bg-blue-600"
+                  ? "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white hover:shadow-purple-500/50"
+                  : "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white hover:shadow-pink-400/50"
               }`}
             >
-              Send Message
+              🚀 Send Message
             </button>
           </div>
         </form>

@@ -1,6 +1,8 @@
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast"; // 👈 import Toaster
+
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -19,6 +21,9 @@ const App = () => {
     if (savedTheme) {
       setDarkMode(savedTheme === "dark");
       document.body.classList.toggle("dark-mode", savedTheme === "dark");
+    } else {
+      setDarkMode(false);
+      localStorage.setItem("theme", "light");
     }
   }, []);
 
@@ -51,6 +56,7 @@ const App = () => {
         </button>
       </div>
 
+      {/* Sections */}
       <Hero darkMode={darkMode} />
       <About darkMode={darkMode} />
       <Skills darkMode={darkMode} />
@@ -58,6 +64,9 @@ const App = () => {
       <Portfolio darkMode={darkMode} />
       <Contact darkMode={darkMode} />
       <Footer darkMode={darkMode} />
+
+      {/* 👇 Toast Container goes here */}
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

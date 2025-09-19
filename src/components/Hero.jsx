@@ -7,7 +7,6 @@ const Hero = ({ darkMode }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const words = [
     "Full-Stack Developer",
     "React Expert",
@@ -41,41 +40,35 @@ const Hero = ({ darkMode }) => {
 
   return (
     <section
-      className={`min-h-screen flex items-center justify-center relative overflow-hidden ${
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-500 ${
         darkMode
-          ? "bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"
-          : "bg-gradient-honeydew-argentinian"
+          ? "bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#111827]"
+          : "bg-gradient-to-br from-[#FFF5F5] via-[#FDF2F2] to-white"
       }`}
     >
-      <div className="absolute inset-0">
-        <div
-          className={`absolute inset-0 ${
-            darkMode ? "bg-grid-white/[0.05]" : "bg-grid-black/[0.05]"
-          } bg-[size:20px_20px]`}
-        />
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center">
+          {/* Name */}
           <h1
-            className={`text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r ${
+            className={`text-6xl md:text-8xl font-bold mb-6 font-['Montserrat'] tracking-tight ${
               darkMode
-                ? "from-blue-400 via-purple-500 to-pink-500"
-                : "from-blue-600 via-purple-600 to-pink-600"
+                ? "text-white drop-shadow-[0_0_12px_rgba(255,107,107,0.4)]"
+                : "bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53]"
             }`}
           >
             Deepak Nekkanti
           </h1>
 
-          <div className="text-2xl md:text-3xl mb-8">
+          {/* Typing Effect */}
+          <div className="text-2xl md:text-3xl mb-8 font-['Inter']">
             <span className={`${darkMode ? "text-gray-300" : "text-gray-700"}`}>
               I&apos;m a{" "}
             </span>
             <span
-              className={`font-bold bg-clip-text text-transparent bg-gradient-to-r ${
+              className={`font-bold border-b-2 ${
                 darkMode
-                  ? "from-blue-400 to-purple-500"
-                  : "from-blue-600 to-purple-600"
+                  ? "text-[#FF6B6B] border-[#FF6B6B]"
+                  : "text-[#FF6B6B] border-[#FF6B6B]"
               }`}
             >
               {text}
@@ -83,29 +76,31 @@ const Hero = ({ darkMode }) => {
             </span>
           </div>
 
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#projects"
-              className={`px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+              className={`px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-md hover:scale-105 ${
                 darkMode
-                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
-                  : "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+                  ? "bg-[#FF6B6B] text-white hover:shadow-[#FF6B6B]/50"
+                  : "bg-[#FF6B6B] text-white hover:shadow-[#FF6B6B]/70"
               }`}
             >
               View My Work
             </a>
             <a
               href="#contact"
-              className={`px-8 py-4 rounded-full font-semibold text-lg border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`px-8 py-4 rounded-full font-semibold text-lg border-2 transition-all duration-300 hover:scale-105 ${
                 darkMode
                   ? "border-gray-400 text-gray-300 hover:bg-gray-800 hover:border-gray-300"
-                  : "border-gray-600 text-gray-700 hover:bg-gray-100"
+                  : "border-[#111827] text-[#111827] hover:bg-[#111827] hover:text-white"
               }`}
             >
               Get In Touch
             </a>
           </div>
 
+          {/* Social Links */}
           <div className="mt-12 flex justify-center space-x-6">
             {[
               {
@@ -129,8 +124,10 @@ const Hero = ({ darkMode }) => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-4xl hover:scale-110 transition-transform duration-300 ${
-                  darkMode ? "hover:text-blue-400" : "hover:text-blue-600"
+                className={`text-4xl transition-transform duration-300 hover:scale-125 ${
+                  darkMode
+                    ? "text-gray-400 hover:text-[#FF6B6B]"
+                    : "text-gray-600 hover:text-[#FF6B6B]"
                 }`}
                 title={social.name}
               >

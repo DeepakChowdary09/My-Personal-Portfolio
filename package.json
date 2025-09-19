@@ -15,8 +15,10 @@
     "@heroicons/react": "^2.1.5",
     "caniuse-lite": "^1.0.30001707",
     "framer-motion": "^12.23.12",
+    "lucide-react": "^0.544.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
