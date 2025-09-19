@@ -1,4 +1,5 @@
-<!doctype html>
+<!-- index.html -->
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,15 +8,30 @@
     <title>My Personal Portfolio</title>
     <script>
       // Check localStorage for theme and set it on page load
-      const savedTheme = localStorage.getItem('theme');
+      const savedTheme = localStorage.getItem("theme");
       if (savedTheme) {
-        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        document.documentElement.classList.toggle(
+          "dark",
+          savedTheme === "dark"
+        );
       }
     </script>
+    <style>
+      .contact-button {
+        margin-right: 1rem;
+      }
+      .dark-mode-toggle {
+        margin-left: 1rem;
+      }
+    </style>
   </head>
-  <body class="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
+  <body
+    class="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300"
+  >
+    <!-- React app root -->
     <div id="root"></div>
-    
+
+    <!-- React main entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

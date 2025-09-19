@@ -2,59 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light mode gradient for sections */
-.section {
-  background: linear-gradient(to right, #38b2ac, #805ad5, #4299e1); /* Light mode gradient */
-  transition: background 0.5s ease; /* Smooth transition */
+/* CSS Variables for Gradient Theme */
+:root {
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #d946ef 100%);
+  --gradient-secondary: linear-gradient(135deg, #d946ef 0%, #f59e0b 100%);
+  --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #0ea5e9 100%);
+  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --gradient-light: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
-/* Dark mode gradient for sections */
-body.dark-mode .section {
-  background: linear-gradient(to right, #1a202c, #2d3748, #4a5568); /* Dark mode gradient */
-}
-
-/* General body background */
+/* Light mode gradient backgrounds */
 body {
-  transition: background 0.5s ease; /* Smooth transition for body background */
-  background: linear-gradient(to right, #38b2ac, #805ad5, #4299e1); /* Light mode gradient */
+ background: var(--gradient-light); 
+
+  transition: background 0.5s ease;
+}
+
+/* Dark mode gradient backgrounds */
+body.dark-mode {
+  background: var(--gradient-dark);
+}
+
+/* Gradient utility classes */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Text colors for theme */
+body {
+  color: #2d3748;
 }
 
 body.dark-mode {
-  background: linear-gradient(to right, #1a202c, #2d3748, #4a5568); /* Dark mode background */
+  color: #edf2f4;
 }
 
-/* Text color for light mode */
-body {
-  color: #2d3748; /* Dark text for light mode */
+/* Fix spacing for theme toggle and contact elements */
+.theme-toggle-spacing {
+  margin-right: 1.5rem;
 }
 
-/* Text color for dark mode */
-body.dark-mode {
-  color: #edf2f4; /* Light text for dark mode */
+.contact-icon-spacing {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-/* Optional: Keep specific elements with adjusted colors */
-h1, h2, h3, p {
-  transition: color 0.5s ease; /* Smooth transition for text color */
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .theme-toggle-spacing {
+    margin-right: 1rem;
+  }
+  
+  .contact-icon-spacing {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 }
 
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Enhanced gradient sections */
+/* src/index.css */
+.gradient-section {
+  background: var(--gradient-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-secondary);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.gradient-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cursor glow effect */
 .cursor-light {
   position: absolute;
-  width: 150px; /* Width of the glow area, adjust as needed */
-  height: 150px; /* Height of the glow area, adjust as needed */
-  border-radius: 50%; /* Make it circular */
-  transition: transform 0.2s ease; /* Smooth transitions for position */
-  transform: translate(-50%, -50%); /* Center the glow around the cursor position */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  transform: translate(-50%, -50%);
   box-shadow: 
-    0 0 30px 15px rgba(255, 0, 150, 0.5), /* Inner glow */
-    0 0 60px 30px rgba(0, 204, 255, 0.3); /* Outer glow */
-  background: transparent; /* Fully transparent */
+    0 0 30px 15px rgba(255, 0, 150, 0.5),
+    0 0 60px 30px rgba(0, 204, 255, 0.3);
+  background: transparent;
+  pointer-events: none;
 }
 
-/* Adjust glow color based on mode */
 body.dark-mode .cursor-light {
   box-shadow: 
-    0 0 30px 15px rgba(255, 255, 255, 0.4), /* White glow effect */
-    0 0 60px 30px rgba(200, 200, 200, 0.2); /* Softer outer glow */
-  background: transparent; /* Keep background transparent */
+    0 0 30px 15px rgba(255, 255, 255, 0.4),
+    0 0 60px 30px rgba(200, 200, 200, 0.2);
+}
+
+/* Align contact button and dark mode toggle */
+.contact-button {
+  margin-right: 1rem;
+}
+
+.dark-mode-toggle {
+  margin-left: 1rem;
 }

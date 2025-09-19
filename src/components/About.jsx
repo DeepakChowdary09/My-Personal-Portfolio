@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { useState } from "react";
 
 const About = ({ darkMode }) => {
-  const [activeTab, setActiveTab] = useState('skills');
+  const [activeTab, setActiveTab] = useState("skills");
 
   const openTab = (tabName) => {
     setActiveTab(tabName);
@@ -13,8 +13,8 @@ const About = ({ darkMode }) => {
       id="about"
       className={`mt-6 scroll-mt-32 about ${
         darkMode
-          ? 'bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]'
-          : 'bg-gradient-to-br from-[#4b6cb7] to-[#182848]'
+          ? "bg-gradient-to-br from-[#5f0640]  to-[#A5303F]"
+          : "bg-gradient-to-br from-[#870057] via-[#ca7d87] to-[#dc0892]"
       } text-white py-16 transition-colors duration-500`}
     >
       <div className="container mx-auto px-4">
@@ -23,17 +23,22 @@ const About = ({ darkMode }) => {
         </h1>
 
         <p className="mb-12 text-lg leading-relaxed text-center max-w-2xl mx-auto text-white/90">
-          🚀 Full Stack Engineer | Passionate about crafting seamless web experiences and building scalable applications.
+          🚀 Full Stack Engineer | Passionate about crafting seamless web
+          experiences and building scalable applications.
         </p>
 
         {/* Tab Navigation */}
         <div className="flex justify-center gap-6 mb-10 flex-wrap">
-          {['skills', 'experience', 'education'].map((tab) => (
+          {["skills", "experience", "education"].map((tab) => (
             <p
               key={tab}
               className={`cursor-pointer pb-2 transition-all ease-in-out transform font-semibold text-xl bg-clip-text text-transparent 
               bg-gradient-to-r from-[#00c6ff] to-[#0072ff] 
-              ${activeTab === tab ? 'border-b-4 border-white scale-105' : 'border-b-2 border-transparent text-white/60'} 
+              ${
+                activeTab === tab
+                  ? "border-b-4 border-white scale-105"
+                  : "border-b-2 border-transparent text-white/60"
+              } 
               hover:scale-110 hover:text-white`}
               onClick={() => openTab(tab)}
             >
@@ -44,7 +49,7 @@ const About = ({ darkMode }) => {
 
         {/* Tab Content */}
         <div className="max-w-4xl mx-auto">
-          {activeTab === 'skills' && (
+          {activeTab === "skills" && (
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300">
               <ul className="space-y-6 text-lg">
                 <li>
@@ -52,7 +57,8 @@ const About = ({ darkMode }) => {
                     Web Development
                   </span>
                   <br />
-                  Designing websites using full stack technologies including React, Node.js, and MongoDB.
+                  Designing websites using full stack technologies including
+                  React, Node.js, and MongoDB.
                 </li>
                 <li>
                   <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00c6ff] to-[#0072ff]">
@@ -65,7 +71,7 @@ const About = ({ darkMode }) => {
             </div>
           )}
 
-          {activeTab === 'experience' && (
+          {activeTab === "experience" && (
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300">
               <ul className="space-y-6 text-lg">
                 <li>
@@ -86,7 +92,7 @@ const About = ({ darkMode }) => {
             </div>
           )}
 
-          {activeTab === 'education' && (
+          {activeTab === "education" && (
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300">
               <ul className="space-y-6 text-lg">
                 <li>

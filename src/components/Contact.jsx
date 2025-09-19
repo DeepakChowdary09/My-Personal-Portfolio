@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { useState } from "react";
 
 const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -14,31 +14,52 @@ const Contact = ({ darkMode }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    setFormData({ name: '', email: '', message: '' });
+    console.log("Form Data:", formData);
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       className={`py-12 transition-colors duration-500 ${
-        darkMode 
-          ? 'bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900' 
-          : 'bg-gradient-to-r from-blue-300 to-purple-200'
+        darkMode
+          ? "bg-gradient-to-r from-[#264653] to-[#2A9D8F]"
+          : "bg-gradient-to-r from-[#264653] via-[#2A9D8F] to-[#264653]"
       }`}
     >
       <div className="container mx-auto px-4 max-w-2xl">
-        <h2 className={`text-4xl font-bold mb-6 text-center ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+        <h2
+          className={`text-4xl font-bold mb-6 text-center ${
+            darkMode ? "text-white" : "text-gray-800"
+          }`}
+        >
           Contact Me
         </h2>
-        <p className={`text-center mb-8 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-          Feel free to reach out to me using the form below for any inquiries or collaborations.
+        <p
+          className={`text-center mb-8 leading-relaxed ${
+            darkMode ? "text-gray-300" : "text-gray-700"
+          }`}
+        >
+          Feel free to reach out to me using the form below for any inquiries or
+          collaborations.
         </p>
 
-        <form onSubmit={handleSubmit} className={`p-6 rounded-lg shadow-lg space-y-6 ${darkMode ? 'bg-gray-700' : 'bg-white bg-opacity-10'}`}>
+        <form
+          onSubmit={handleSubmit}
+          className={`p-6 rounded-lg shadow-lg space-y-6 ${
+            darkMode ? "bg-gray-700" : "bg-white bg-opacity-10"
+          }`}
+        >
           {/* Name Input */}
           <div>
-            <label htmlFor="name" className={`block mb-2 text-lg font-medium ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Name</label>
+            <label
+              htmlFor="name"
+              className={`block mb-2 text-lg font-medium ${
+                darkMode ? "text-gray-300" : "text-gray-800"
+              }`}
+            >
+              Name
+            </label>
             <input
               type="text"
               id="name"
@@ -47,9 +68,9 @@ const Contact = ({ darkMode }) => {
               onChange={handleChange}
               required
               className={`w-full p-3 border rounded-lg focus:outline-none ${
-                darkMode 
-                  ? 'border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500' 
-                  : 'border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500'
+                darkMode
+                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
+                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
               }`}
               placeholder="Enter your name"
             />
@@ -57,7 +78,14 @@ const Contact = ({ darkMode }) => {
 
           {/* Email Input */}
           <div>
-            <label htmlFor="email" className={`block mb-2 text-lg font-medium ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Email</label>
+            <label
+              htmlFor="email"
+              className={`block mb-2 text-lg font-medium ${
+                darkMode ? "text-gray-300" : "text-gray-800"
+              }`}
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -66,9 +94,9 @@ const Contact = ({ darkMode }) => {
               onChange={handleChange}
               required
               className={`w-full p-3 border rounded-lg focus:outline-none ${
-                darkMode 
-                  ? 'border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500' 
-                  : 'border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500'
+                darkMode
+                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
+                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
               }`}
               placeholder="Enter your email"
             />
@@ -76,7 +104,14 @@ const Contact = ({ darkMode }) => {
 
           {/* Message Input */}
           <div>
-            <label htmlFor="message" className={`block mb-2 text-lg font-medium ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Message</label>
+            <label
+              htmlFor="message"
+              className={`block mb-2 text-lg font-medium ${
+                darkMode ? "text-gray-300" : "text-gray-800"
+              }`}
+            >
+              Message
+            </label>
             <textarea
               id="message"
               name="message"
@@ -84,9 +119,9 @@ const Contact = ({ darkMode }) => {
               onChange={handleChange}
               required
               className={`w-full p-3 border rounded-lg focus:outline-none h-32 ${
-                darkMode 
-                  ? 'border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500' 
-                  : 'border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500'
+                darkMode
+                  ? "border-gray-600 bg-gray-800 text-gray-300 focus:border-blue-500"
+                  : "border-gray-400 bg-gray-100 text-gray-800 focus:border-blue-500"
               }`}
               placeholder="Enter your message"
             ></textarea>
@@ -97,9 +132,9 @@ const Contact = ({ darkMode }) => {
             <button
               type="submit"
               className={`font-semibold py-2 px-6 rounded-lg shadow transition duration-300 ${
-                darkMode 
-                  ? 'bg-blue-500 text-white hover:bg-blue-400' 
-                  : 'bg-blue-500 text-white hover:bg-blue-600'
+                darkMode
+                  ? "bg-blue-500 text-white hover:bg-blue-400"
+                  : "bg-blue-500 text-white hover:bg-blue-600"
               }`}
             >
               Send Message
